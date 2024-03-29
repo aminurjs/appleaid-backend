@@ -8,7 +8,7 @@ const port = process.env.port || 5000;
 //MiddleWare
 app.use(
   cors({
-    origin: ["http://localhost:3000"],
+    origin: ["http://localhost:5173"],
     credentials: true,
   })
 );
@@ -63,6 +63,7 @@ app.post("/api/post", async (req, res) => {
 });
 app.get("/api/all-posts", async (req, res) => {
   const result = await postCollection.find().sort({ _id: -1 }).toArray();
+
   res.send(result);
 });
 app.get("/api/post/:id", async (req, res) => {
